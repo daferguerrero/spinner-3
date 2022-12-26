@@ -1,0 +1,67 @@
+/* Aplicar stilo general a tods los elementos */
+*{
+    margin: 0;
+    box-sizing: border-box; /* Esto sirve p q los tamaños se apliquen correctamente cuando tengan un padding o un margin */
+}
+
+body{
+    background-color: #333;
+    height: 100vh;
+}
+
+.contenedor{
+    /* border: 10px solid red; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cubo{
+    width: 80px;
+    height: 80px;
+    /* border: 1px solid #fff; */
+    background-color: #fff;
+
+    /*
+    - animation-name: mover-cub;
+    - animation-duration: 1.2s; > Indica la cantidad de tiempo que la animación consume en completar su ciclo (duración).
+    - animation-timing-function: ease-in-out; > (función de temporización de animación)Indica el ritmo de la animación, es decir, como se muestran los fotogramas de la animación estableciendo curvas de aceleración.
+                                ease-in-out > Especifica un efecto de transición con un inicio y un final lentos
+
+    - animation-iteration-count: infinite; > Define el numero de veces que un ciclo de animación debe ser ejecutado antes de detenerse.
+        Podemos indicar infinite para repetir la animación indefinidamente.*/
+
+    /* La propiedad animation de CSS es una propiedad abreviada para una lista de valores. */
+
+    animation: mover-cubo 1.2s ease-in-out infinite;
+}
+
+
+/* ANIMACIONES */
+
+/* ------------------------- */
+/* fotograma clave o keyframe */
+/* ------------------------- */
+
+/* La regla @keyframes permite controlar los pasos intermedios en una secuencia de animación CSS mediante el establecimiento de puntos de trayectoria  a lo largo de la secuencia de animación que debe ser alcanzado por determinados puntos durante la animación.
+
+Para utilizar un fotograma clave, se crea una regla de keyframes con un nombre que es utilizado por la propiedad animation-name para que coincida con una animación de keyframe en su lista. Cada regla @keyframes contiene una lista de estilo de selectores, cada una de los cuales está compuesto de un porcentaje a lo largo de la animación en la que se produce el keyframe así como un bloque que contiene la información de estilo para ese keyframe. */
+
+@keyframes mover-cubo{
+/* La propiedad perspectiva determina la distancia entre el plano z=0 y el usuario para dar algo de perspectiva al elemento 3D posicionado.
+   Cada elemento 3D con z>0 se hace más grande y con z<0 se vuelve más pequeño. La intensidad del efecto es determinado por el valor de esta propiedad.
+
+    Parte de los elementos 3D que se encuentran destrás del usuario, es decir, que su coordenada del eje z es mayor que el valor de la propiedad perspectiva de CSS no es dibujada. */
+
+    0%{
+        transform: perspective(120px);
+    }
+    50%{
+        transform: perspective(120px) rotatey(180deg);
+    }
+    100%{
+        transform: perspective(120px) rotatey(180deg) rotatex(180deg);
+    }
+}
